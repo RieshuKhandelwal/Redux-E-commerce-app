@@ -1,0 +1,42 @@
+.nav-magnetic {
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 1.2em;
+  border-radius: 0.7em;
+  transition: 
+    color 0.2s cubic-bezier(.4,2,.6,1),
+    background 0.2s cubic-bezier(.4,2,.6,1),
+    transform 0.25s cubic-bezier(.4,2,.6,1),
+    box-shadow 0.25s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.nav-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.7em;
+  background: linear-gradient(90deg, var(--t1) 0%, var(--t2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.nav-magnetic:hover,
+.nav-magnetic:focus {
+  color: var(--sec);
+  transform: scale(1.18) rotate(-2deg);
+  box-shadow: 0 4px 24px 0 var(--t1), 0 1.5px 8px 0 var(--t2);
+}
+
+.nav-magnetic:hover::before,
+.nav-magnetic:focus::before {
+  opacity: 0.25;
+}
+
+.nav-magnetic.active {
+  color: var(--t3);
+  text-shadow: 0 2px 8px var(--t1);
+}
